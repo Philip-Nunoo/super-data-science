@@ -36,6 +36,14 @@
     "eslint-plugin-meteor": "^5.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.13.0",
+    "husky": "^2.2.0",
+    "precise-commits": "^1.0.2",
     "prettier": "1.17.0"
-  }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "precise-commits --no-verify"
+    }
+  },
+  "license": "MIT"
 }
