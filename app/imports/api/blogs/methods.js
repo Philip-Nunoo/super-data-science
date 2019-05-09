@@ -2,6 +2,7 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { CallPromiseMixin } from 'meteor/didericis:callpromise-mixin';
 import { LoggedInMixin } from 'meteor/tunifight:loggedin-mixin';
 import { BlogFormSchema } from './schema';
+import Blogs from './Blogs';
 
 export const createBlog = new ValidatedMethod({
     name: 'blog/create',
@@ -22,7 +23,7 @@ export const createBlog = new ValidatedMethod({
     validate: BlogFormSchema.validator(),
     run(doc) {
         if (!this.isSimulation) {
-            console.log(doc);
+            return Blogs.insert(doc);
         }
         return false;
     }

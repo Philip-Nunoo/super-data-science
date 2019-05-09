@@ -13,14 +13,41 @@ export const BlogFormSchema = new SimpleSchema({
 const BlogSchema = new SimpleSchema({
     createdAt: {
         type: Date,
-        defaultValue: new Date()
+        autoValue() {
+            if (this.isInsert) {
+                return new Date();
+            }
+            if (this.isUpsert) {
+                return { $setOnInsert: new Date() };
+            }
+            return this.unset(); // Prevent user from supplying their own value
+        }
     },
     createdBy: {
         type: String,
-        regEx: SimpleSchema.RegEx.Id
+        regEx: SimpleSchema.RegEx.Id,
+        autoValue() {
+            if (this.isInsert) {
+                return this.userId;
+            }
+            if (this.isUpsert) {
+                return { $setOnInsert: new Date() };
+            }
+            return this.unset(); // Prevent user from supplying their own value
+        }
+    },
+    updatedAt: {
+        type: Date,
+        autoValue() {
+            if (this.isUpdate) {
+                return new Date();
+            }
+            return this.unset();
+        },
+        optional: true
     }
 });
 
-BlogSchema.extend(BlogSchema);
+BlogSchema.extend(BlogFormSchema);
 
 export default BlogSchema;
