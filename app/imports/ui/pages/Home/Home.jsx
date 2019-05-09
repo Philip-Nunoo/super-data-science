@@ -5,7 +5,7 @@ const Home = () => {
         <React.Fragment>
             <header
                 className="masthead"
-                style={{ backgroundImage: 'url(\'img/post-bg.jpg\')' }}
+                style={{ backgroundImage: "url('img/post-bg.jpg')" }}
             >
                 <div className="overlay" />
                 <div className="container">

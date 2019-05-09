@@ -52,23 +52,32 @@ class MainLayout extends React.PureComponent {
                             path="/blog"
                             exact
                             component={Blogs}
+                            {...this.state}
                         />
                         <PrivateRouteLayout
                             path="/blog/:id"
                             exact
                             component={Blog}
+                            {...this.state}
                         />
                         <AuthRouteLayout
                             path="/login"
                             exact
                             component={Login}
+                            {...this.state}
                         />
                         <AuthRouteLayout
                             path="/signup"
                             exact
                             component={Signup}
+                            {...this.state}
                         />
-                        <Route path="/admin/users" exact component={Users} />
+                        <PrivateRouteLayout
+                            path="/admin/users"
+                            exact
+                            component={Users}
+                            {...this.state}
+                        />
                         <Route component={() => 'Not found'} />
                     </Switch>
                 </React.Fragment>
