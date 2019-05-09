@@ -17,12 +17,14 @@ class AuthRouteLayout extends React.Component {
     }
 
     isLoggedIn(props) {
-        const logged = !Meteor.loggingIn() && !!Meteor.userId();
+        if (!Meteor.loggingIn()) {
+            const logged = !!Meteor.userId();
 
-        if (logged) {
-            props.history.push('/');
-        } else {
-            this.setState({ loading: false });
+            if (logged) {
+                props.history.push('/');
+            } else {
+                this.setState({ loading: false });
+            }
         }
     }
 
