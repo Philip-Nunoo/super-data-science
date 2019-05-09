@@ -2,3 +2,33 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.auth-layout {
+  background: #228ae6;
+  background: url(/img/Auth-Pattern.svg),linear-gradient(330deg,#16519c,#038bf7);
+  min-height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.auth-layout .container {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.auth-layout .bloc {
+  padding-top: 16%;
+}
+
+.form {
+  background-color: #fff;
+  border-radius: 8px;
+  font-family: Roboto,sans-serif;
+  height: auto;
+  margin: 0 auto;
+  max-width: 420px;
+  width: 100%;
+  padding: 30px 27px 25px;
+}

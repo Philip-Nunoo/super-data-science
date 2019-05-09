@@ -13,10 +13,16 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
+    "bcrypt": "^3.0.6",
+    "bootstrap": "^4.3.1",
     "meteor-node-stubs": "^0.4.1",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.0",
+    "simpl-schema": "^1.5.5",
+    "uniforms": "^1.31.1",
+    "uniforms-bootstrap4": "^1.31.1",
+    "uniforms-bridge-simple-schema-2": "^2.0.0-alpha.0"
   },
   "meteor": {
     "mainModule": {
@@ -39,7 +45,8 @@
     "eslint-plugin-react": "^7.13.0",
     "husky": "^2.2.0",
     "precise-commits": "^1.0.2",
-    "prettier": "1.17.0"
+    "prettier": "1.17.0",
+    "prop-types": "^15.7.2"
   },
   "husky": {
     "hooks": {
