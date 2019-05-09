@@ -23,9 +23,11 @@ accounts-base
 accounts-password
 
 # Community
+aldeed:collection2
 mdg:validated-method
 didericis:callpromise-mixin
 tunifight:loggedin-mixin
 ziarno:restrict-mixin
 lacosta:method-hooks
 didericis:permissions-mixin
+alanning:roles
