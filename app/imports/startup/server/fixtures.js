@@ -3,6 +3,13 @@ import { Roles } from 'meteor/alanning:roles';
 import { Mongo } from 'meteor/mongo';
 import fixturesBlogs from './fixtures.blogs';
 import Blogs from '../../api/blogs/Blogs';
+import { Meteor } from 'meteor/meteor';
+import MeteorMongoId from 'meteor-mongo-id';
+import { Random } from 'meteor/random';
+
+// console.log(new Meteor.Collection.ObjectID().toHexString());
+// console.log(new Mongo.ObjectID().toHexString());
+// console.log(Random.hexString(17));
 
 const createBlog = () => {
     const adminUsers = Roles.getUsersInRole('admin').fetch();
@@ -14,7 +21,7 @@ const createBlog = () => {
             const objectId = new Mongo.ObjectID();
 
             bulk.insert({
-                _id: objectId._str,
+                _id: Random.hexString(17),
                 ...fixturesBlogs[i],
                 published: true,
                 createdBy: id,

@@ -8,9 +8,9 @@ const BlogRow = ({ deletePost, editPost, isAdmin, post }) => {
         <div className="post-preview">
             <Link to={`/blog/${post._id}`}>
                 <h2 className="post-title">{post.title}</h2>
-                <h3 className="post-subtitle">
+                {/* <h3 className="post-subtitle">
                     Problems look mighty small from 150 miles up
-                </h3>
+                </h3> */}
             </Link>
             <p className="post-meta">
                 Posted by&nbsp;
