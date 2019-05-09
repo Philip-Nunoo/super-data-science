@@ -39,18 +39,12 @@ class PrivateRouteLayout extends React.Component {
 
         return (
             <div className="private-layout">
-                <div className="container">
-                    <div className="Row">
-                        <div className="col">
-                            <Route
-                                path={path}
-                                exact={exact}
-                                component={component}
-                                {...props}
-                            />
-                        </div>
-                    </div>
-                </div>
+                <Route
+                    path={path}
+                    exact={exact}
+                    component={component}
+                    {...props}
+                />
             </div>
         );
     }
