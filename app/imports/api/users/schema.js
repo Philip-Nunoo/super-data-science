@@ -1,15 +1,22 @@
 import SimpleSchema from 'simpl-schema';
 
 export const LoginSchema = new SimpleSchema({
-    email: {
+    email: String,
+    password: String
+});
+
+export const SignupSchema = new SimpleSchema({
+    email: String,
+    password: {
         type: String
     },
-    password: {
+    confirmPassword: {
         type: String,
-        uniforms: {
-            type: 'password'
+        custom() {
+            if (this.value !== this.field('password').value) {
+                return 'passwordMismatch';
+            }
+            return true;
         }
     }
 });
-
-export default 'UserSchema';
