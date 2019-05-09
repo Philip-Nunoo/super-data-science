@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import Blogs from '../../../api/blogs/Blogs';
+import { createBlog, getPost } from '../../../api/blogs/methods';
 import CreateBlogForm from '../../components/CreateBlogForm';
-import { createBlog } from '../../../api/blogs/methods';
 import BlogRow from '../../components/BlogRow';
 
 @withTracker(() => {
@@ -34,7 +34,8 @@ class BlogLists extends React.Component {
     };
 
     state = {
-        toggleCreateBlogForm: false
+        toggleCreateBlogForm: false,
+        model: undefined
     };
 
     formRef = {};
@@ -48,6 +49,7 @@ class BlogLists extends React.Component {
     cancel = () => {
         this.formRef.reset();
         this.setState({
+            model: undefined,
             toggleCreateBlogForm: false
         });
     };
@@ -56,8 +58,22 @@ class BlogLists extends React.Component {
         this.formRef.submit();
     };
 
+    editPost = id => {
+        getPost
+            .callPromise({ id })
+            .then(post => {
+                this.setState({
+                    model: post,
+                    toggleCreateBlogForm: true
+                });
+            })
+            .catch(error => console.log(error));
+    };
+
+    deletePost = id => {};
+
     renderActionButtons() {
-        const { toggleCreateBlogForm } = this.state;
+        const { toggleCreateBlogForm, model } = this.state;
 
         return (
             <React.Fragment>
@@ -95,6 +111,7 @@ class BlogLists extends React.Component {
                         }}
                         handleSubmit={doc => createBlog.callPromise(doc)}
                         onSuccess={this.cancel}
+                        model={model}
                     />
                 )}
             </React.Fragment>
@@ -121,6 +138,8 @@ class BlogLists extends React.Component {
                                         key={blog._id}
                                         post={blog}
                                         isAdmin={isAdmin}
+                                        editPost={this.editPost}
+                                        deletePost={this.deletePost}
                                     />
                                 ))}
                             </div>

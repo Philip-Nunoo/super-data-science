@@ -1,14 +1,24 @@
 import SimpleSchema from 'simpl-schema';
 
-export const BlogFormSchema = new SimpleSchema({
-    title: String,
-    description: String,
-    published: {
-        type: Boolean,
-        optional: true,
-        defaultValue: true
+export const BlogFormSchema = new SimpleSchema(
+    {
+        _id: {
+            type: String,
+            optional: true,
+            regEx: SimpleSchema.RegEx.Id
+        },
+        title: String,
+        description: String,
+        published: {
+            type: Boolean,
+            optional: true,
+            defaultValue: true
+        }
+    },
+    {
+        clean: true
     }
-});
+);
 
 const BlogSchema = new SimpleSchema({
     createdAt: {
