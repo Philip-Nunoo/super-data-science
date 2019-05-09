@@ -16,6 +16,7 @@
     "bcrypt": "^3.0.6",
     "bootstrap": "^4.3.1",
     "meteor-node-stubs": "^0.4.1",
+    "moment": "^2.24.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-notification-alert": "0.0.12",
@@ -33,6 +34,8 @@
     "testModule": "tests/main.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@meteorjs/eslint-config-meteor": "^1.0.5",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",

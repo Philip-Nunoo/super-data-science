@@ -9,6 +9,7 @@
     },
     "plugins": ["prettier"],
     "rules": {
+        "experimentalDecorators": "off",
         "prettier/prettier": "error",
         "indent": [
             "error",

@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
 
 @withRouter
-class AuthRouteLayout extends React.Component {
+class PrivateRouteLayout extends React.Component {
     state = {
         loading: true
     };
@@ -21,8 +21,8 @@ class AuthRouteLayout extends React.Component {
         if (!Meteor.loggingIn()) {
             const logged = !!Meteor.userId();
 
-            if (logged) {
-                props.history.push('/');
+            if (!logged) {
+                props.history.push('/login');
             } else {
                 this.setState({ loading: false });
             }
@@ -38,34 +38,26 @@ class AuthRouteLayout extends React.Component {
         }
 
         return (
-            <div className="auth-layout">
-                <div className="container">
-                    <div className="bloc">
-                        <div className="Row">
-                            <div className="col">
-                                <Route
-                                    path={path}
-                                    exact={exact}
-                                    component={component}
-                                    {...props}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="private-layout">
+                <Route
+                    path={path}
+                    exact={exact}
+                    component={component}
+                    {...props}
+                />
             </div>
         );
     }
 }
 
-AuthRouteLayout.propTypes = {
+PrivateRouteLayout.propTypes = {
     path: PropTypes.string.isRequired,
     exact: PropTypes.bool,
     component: PropTypes.oneOfType([PropTypes.func]).isRequired
 };
 
-AuthRouteLayout.defaultProps = {
+PrivateRouteLayout.defaultProps = {
     exact: false
 };
 
-export default AuthRouteLayout;
+export default PrivateRouteLayout;

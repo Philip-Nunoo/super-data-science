@@ -25,7 +25,7 @@ const login = (email, password) => {
 
 const Login = () => (
     <AutoForm
-        className="form"
+        className="auth-form"
         schema={bridge}
         onSubmit={({ email, password }) => login(email, password)}
         onSubmitFailure={error => console.log(error)}
