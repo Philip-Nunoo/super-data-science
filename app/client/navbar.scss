@@ -25,10 +25,14 @@
     text-transform: uppercase;
 }
 
+
 @media only screen and (min-width: 992px) {
     #mainNav {
         border-bottom: 1px solid transparent;
         background: transparent;
+    }
+    #mainNav.solid{
+        background: #1B2331;
     }
     #mainNav .navbar-brand {
         padding: 10px 20px;

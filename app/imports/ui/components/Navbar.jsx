@@ -1,23 +1,33 @@
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import { Meteor } from 'meteor/meteor';
+import classnames from 'classnames';
+import { Roles } from 'meteor/alanning:roles';
 
-const Navbar = ({ logged, location: { pathname } }) => {
+const Navbar = ({ logged, userId, location: { pathname } }) => {
     const getNavLinkClass = path => {
         return pathname === path ? 'active' : '';
     };
 
+    const fixedTop = pathname === '/blog' || pathname === '/admin/users';
+    const isAdmin = Roles.userIsInRole(userId, 'admin');
+
     return (
         <nav
-            className="navbar navbar-expand-lg navbar-light fixed-top"
+            className={classnames(
+                'fixed-top navbar navbar-expand-lg navbar-light',
+                {
+                    solid: fixedTop
+                }
+            )}
             id="mainNav"
         >
             <div className="container">
-                <a className="navbar-brand" href="index.html">
+                <Link className="navbar-brand" to="/">
                     SuperDataScience
-                </a>
+                </Link>
                 <button
                     className="navbar-toggler navbar-toggler-right"
                     type="button"
@@ -37,14 +47,25 @@ const Navbar = ({ logged, location: { pathname } }) => {
                                 Home
                             </Link>
                         </li>
+                        {isAdmin && (
+                            <li
+                                className={`nav-item ${getNavLinkClass(
+                                    '/admin/users'
+                                )}`}
+                            >
+                                <Link className="nav-link" to="/admin/users">
+                                    Users
+                                </Link>
+                            </li>
+                        )}
                         {logged && (
                             <React.Fragment>
                                 <li
                                     className={`nav-item ${getNavLinkClass(
-                                        '/blogs'
+                                        '/blog'
                                     )}`}
                                 >
-                                    <Link className="nav-link" to="/blogs">
+                                    <Link className="nav-link" to="/blog">
                                         Blogs
                                     </Link>
                                 </li>
@@ -66,7 +87,7 @@ const Navbar = ({ logged, location: { pathname } }) => {
                                         '/login'
                                     )}`}
                                 >
-                                    <Link className="nav-link" to="/">
+                                    <Link className="nav-link" to="/login">
                                         Login
                                     </Link>
                                 </li>
@@ -92,11 +113,13 @@ Navbar.propTypes = {
     logged: PropTypes.bool,
     location: PropTypes.shape({
         pathname: PropTypes.string
-    }).isRequired
+    }).isRequired,
+    userId: PropTypes.string
 };
 
 Navbar.defaultProps = {
-    logged: false
+    logged: false,
+    userId: null
 };
 
 export default withRouter(Navbar);

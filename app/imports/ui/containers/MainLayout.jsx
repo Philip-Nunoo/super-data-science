@@ -5,10 +5,12 @@ import { Tracker } from 'meteor/tracker';
 import Login from '../pages/Login/Login';
 import Signup from '../pages/Signup/Signup';
 import AuthRouteLayout from './AuthRouteLayout';
-import Navbar from '../components/Navbar';
 import PrivateRouteLayout from './PrivateRouteLayout';
+import Navbar from '../components/Navbar';
 import Blogs from '../pages/Blogs/Blogs';
 import Blog from '../pages/Blog/Blog';
+import Home from '../pages/Home/Home';
+import Users from '../pages/Users/Users';
 
 class MainLayout extends React.PureComponent {
     state = {
@@ -27,6 +29,7 @@ class MainLayout extends React.PureComponent {
             const logged = !!Meteor.userId();
             this.setState({
                 loading: false,
+                userId: Meteor.userId(),
                 logged
             });
         }
@@ -44,7 +47,7 @@ class MainLayout extends React.PureComponent {
                 <React.Fragment>
                     <Navbar {...this.state} />
                     <Switch>
-                        <Route path="/" exact component={() => 'Home'} />
+                        <Route path="/" exact component={Home} />
                         <PrivateRouteLayout
                             path="/blog"
                             exact
@@ -65,6 +68,7 @@ class MainLayout extends React.PureComponent {
                             exact
                             component={Signup}
                         />
+                        <Route path="/admin/users" exact component={Users} />
                         <Route component={() => 'Not found'} />
                     </Switch>
                 </React.Fragment>
