@@ -14,6 +14,18 @@ class BlogCollection extends Mongo.Collection {
                 createdBy: Users.findOne(blog.createdBy) || {}
             };
         };
+
+        this.deny({
+            insert() {
+                return true;
+            },
+            update() {
+                return true;
+            },
+            remove() {
+                return true;
+            }
+        });
     }
 }
 

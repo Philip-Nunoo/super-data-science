@@ -18,4 +18,16 @@ Users._transform = user => {
     };
 };
 
+Users.deny({
+    insert() {
+        return true;
+    },
+    update() {
+        return true;
+    },
+    remove() {
+        return true;
+    }
+});
+
 export default Users;
