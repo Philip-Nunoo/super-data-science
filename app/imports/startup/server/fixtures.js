@@ -1,15 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import { Roles } from 'meteor/alanning:roles';
-import { Mongo } from 'meteor/mongo';
-import fixturesBlogs from './fixtures.blogs';
-import Blogs from '../../api/blogs/Blogs';
 import { Meteor } from 'meteor/meteor';
-import MeteorMongoId from 'meteor-mongo-id';
 import { Random } from 'meteor/random';
-
-// console.log(new Meteor.Collection.ObjectID().toHexString());
-// console.log(new Mongo.ObjectID().toHexString());
-// console.log(Random.hexString(17));
+import Blogs from '../../api/blogs/Blogs';
+import fixturesBlogs from './fixtures.blogs';
 
 const createBlog = () => {
     const adminUsers = Roles.getUsersInRole('admin').fetch();
@@ -18,8 +12,6 @@ const createBlog = () => {
         const id = adminUsers[0]._id;
         // eslint-disable-next-line no-plusplus
         for (let i = 0; i < fixturesBlogs.length; i++) {
-            const objectId = new Mongo.ObjectID();
-
             bulk.insert({
                 _id: Random.hexString(17),
                 ...fixturesBlogs[i],

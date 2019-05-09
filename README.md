@@ -13,12 +13,14 @@ A list of some of personal favourite packages being used.
 #### Node modules
 | Package Name | Version |
 |---|---|
-| [React]() | 16.5.0 |
+| [React]() |  |
 | [Eslint]() | |
 | [Prettier]() | |
 | [React router]() | |
 | [Uniforms]() | |
 | [Bootstrap 4]() | |
+| [moment]() | |
+| [simpl-schema]() | |
 
 #### Meteor packages
 | Package Name  | Version |
@@ -41,4 +43,15 @@ $ meteor npm i
 $ meteor npm start
 ```
 
+The application should start by default on port 2300
+
+## Test users
+| Email  | password  | Role  |
+|---|---|---|
+| admin@superdatascience.com  | apple1  | Admin  |
+| juan@superdatascience.com  | apple1  | guest  |
+
 ### Blog post and Resources
+You can read mine blog post here on how to get this up and running on aws
+
+[How to deploy to aws](https://medium.com/@philipaffulnunoo/how-to-deploy-meteor-1-4-app-to-aws-ec2-in-2017-bfea1a7c308a)
