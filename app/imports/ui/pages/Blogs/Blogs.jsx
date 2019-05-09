@@ -5,6 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 import Blogs from '../../../api/blogs/Blogs';
 import CreateBlogForm from '../../components/CreateBlogForm';
 import { createBlog } from '../../../api/blogs/methods';
+import BlogRow from '../../components/BlogRow';
 
 @withTracker(() => {
     const subscription = Meteor.subscribe('blogs');
@@ -105,17 +106,27 @@ class BlogLists extends React.Component {
         const isAdmin = Roles.userIsInRole(userId, 'admin');
 
         return (
-            <div>
-                {isAdmin && this.renderActionButtons()}
-                {loading && <div>loading</div>}
-                {!loading && blogs.length <= 0 && <div>No blog created</div>}
-                {!loading && blogs.length > 0 && (
-                    <div>
-                        {blogs.map(blog => (
-                            <div key={blog._id}>{blog.title}</div>
-                        ))}
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-8 col-md-10 mx-auto">
+                        {isAdmin && this.renderActionButtons()}
+                        {loading && <div>loading</div>}
+                        {!loading && blogs.length <= 0 && (
+                            <div>No blog created</div>
+                        )}
+                        {!loading && blogs.length > 0 && (
+                            <div>
+                                {blogs.map(blog => (
+                                    <BlogRow
+                                        key={blog._id}
+                                        post={blog}
+                                        isAdmin={isAdmin}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </div>
-                )}
+                </div>
             </div>
         );
     }
