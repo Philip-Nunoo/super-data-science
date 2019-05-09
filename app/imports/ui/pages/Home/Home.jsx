@@ -5,7 +5,8 @@ const Home = () => {
         <React.Fragment>
             <header
                 className="masthead"
-                style={{ backgroundImage: "url('img/post-bg.jpg')" }}
+                // eslint-disable-next-line prettier/prettier
+                style={{ backgroundImage: 'url(\'img/home-bg.jpg\')' }}
             >
                 <div className="overlay" />
                 <div className="container">
