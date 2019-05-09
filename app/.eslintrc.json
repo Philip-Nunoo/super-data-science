@@ -1,9 +1,15 @@
 {
-    "extends": "@meteorjs/eslint-config-meteor",
+    "extends": [
+        "@meteorjs/eslint-config-meteor",
+        "prettier",
+        "prettier/react"
+    ],
     "env": {
         "meteor": true
     },
+    "plugins": ["prettier"],
     "rules": {
+        "prettier/prettier": "error",
         "indent": [
             "error",
             4
@@ -19,6 +25,32 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": "off",
+        "import/prefer-default-export": [
+            "error",
+            "all"
+        ],
+        "curly": [
+            "error",
+            "all"
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 160,
+                "ignoreUrls": true
+            }
+        ],
+        "no-confusing-arrow": [
+            "error", 
+            {
+                "allowParens": false
+            }
+        ],
+        "react/jsx-indent": [
+            4
+        ],
+        "react/jsx-no-undef": [2, { "allowGlobals": true }]
     }
 }
