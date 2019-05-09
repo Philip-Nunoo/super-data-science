@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import Blogs from '../../../api/blogs/Blogs';
-import { createBlog, getPost } from '../../../api/blogs/methods';
+import { createBlog, getPost, deletePost } from '../../../api/blogs/methods';
 import CreateBlogForm from '../../components/CreateBlogForm';
 import BlogRow from '../../components/BlogRow';
 
@@ -70,7 +70,14 @@ class BlogLists extends React.Component {
             .catch(error => console.log(error));
     };
 
-    deletePost = id => {};
+    deletePost = id => {
+        deletePost
+            .callPromise({ id })
+            .then(() => {
+                console.log('deleted');
+            })
+            .catch(error => console.log(error));
+    };
 
     renderActionButtons() {
         const { toggleCreateBlogForm, model } = this.state;

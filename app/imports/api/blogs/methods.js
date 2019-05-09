@@ -63,4 +63,34 @@ export const getPost = new ValidatedMethod({
     }
 });
 
+export const deletePost = new ValidatedMethod({
+    name: 'blog/remove',
+    mixins: [CallPromiseMixin, LoggedInMixin],
+    checkRoles: {
+        roles: ['admin'],
+        rolesError: {
+            error: 'not-allowed',
+            message: 'You are not allowed to call this method',
+            reason: 'You are not allowed to call this method'
+        }
+    },
+    checkLoggedInError: {
+        error: 'notLogged',
+        message: 'You need to be logged in to call this method',
+        reason: 'You need to login'
+    },
+    validate: new SimpleSchema({
+        id: {
+            type: String,
+            regEx: SimpleSchema.RegEx.Id
+        }
+    }).validator(),
+    run({ id }) {
+        if (!this.isSimulation) {
+            return Blogs.remove(id);
+        }
+        return false;
+    }
+});
+
 export default 'Blog.Methods';
