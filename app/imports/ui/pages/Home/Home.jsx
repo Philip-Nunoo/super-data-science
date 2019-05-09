@@ -6,7 +6,7 @@ const Home = () => {
             <header
                 className="masthead"
                 // eslint-disable-next-line prettier/prettier
-                style={{ backgroundImage: 'url(\'img/home-bg.jpg\')' }}
+                style={{ backgroundImage: "url('img/home-bg.jpg'" }}
             >
                 <div className="overlay" />
                 <div className="container">
