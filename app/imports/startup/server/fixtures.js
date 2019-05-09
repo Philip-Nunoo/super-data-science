@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Random } from 'meteor/random';
 import Blogs from '../../api/blogs/Blogs';
 import fixturesBlogs from './fixtures.blogs';
+import Users from '../../api/users/Users';
 
 const createBlog = () => {
     const adminUsers = Roles.getUsersInRole('admin').fetch();
@@ -44,6 +45,15 @@ Meteor.startup(() => {
         }
 
         createBlog();
+    }
+
+    if (!Users.findOne({ username: 'juan' })) {
+        Accounts.createUser({
+            email: 'juan@superdatascience.com',
+            password: 'apple1',
+            username: 'juan',
+            profile: { name: 'juan' }
+        });
     }
     createBlog();
 });
