@@ -20,7 +20,7 @@ const signup = (email, password) => {
 
 const Signup = () => (
     <AutoForm
-        className="form"
+        className="auth-form"
         schema={bridge}
         onSubmit={({ email, password }) => signup(email, password)}
         onSubmitFailure={error => console.log(error)}
