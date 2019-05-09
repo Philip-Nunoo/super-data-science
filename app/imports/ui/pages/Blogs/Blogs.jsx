@@ -130,7 +130,7 @@ class BlogLists extends React.Component {
         const isAdmin = Roles.userIsInRole(userId, 'admin');
 
         return (
-            <div className="container">
+            <div className="container" style={{ paddingTop: 70 }}>
                 <div className="row">
                     <div className="col-lg-8 col-md-10 mx-auto">
                         {isAdmin && this.renderActionButtons()}
