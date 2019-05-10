@@ -33,6 +33,23 @@ blockquote {
   color: #868e96;
 }
 
+
+::selection {
+  color: #fff;
+  background: #0085A1;
+  text-shadow: none;
+}
+
+img::selection {
+  color: rgb(238, 184, 184);
+  background: transparent;
+}
+
+img::-moz-selection {
+  color: #fff;
+  background: transparent;
+}
+
 .auth-layout {
   background: #228ae6;
   background: url(/img/Auth-Pattern.svg), linear-gradient(330deg, #16519c, #038bf7);

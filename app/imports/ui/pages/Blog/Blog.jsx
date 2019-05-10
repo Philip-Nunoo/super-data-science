@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Bert } from 'meteor/themeteorchef:bert';
 import { getPost } from '../../../api/blogs/methods';
 
 class Blog extends React.PureComponent {
@@ -17,7 +18,10 @@ class Blog extends React.PureComponent {
         getPost
             .callPromise({ id })
             .then(post => this.setState({ post }))
-            .catch(error => this.setState({ error }))
+            .catch(error => {
+                Bert.alert(error.reason, 'danger', 'growl-top-right');
+                this.setState({ error });
+            })
             .finally(() => {
                 this.setState({
                     loading: false
@@ -37,6 +41,7 @@ class Blog extends React.PureComponent {
             <React.Fragment>
                 <header
                     className="masthead"
+                    // eslint-disable-next-line quotes
                     style={{ backgroundImage: "url('img/post-bg.jpg')" }}
                 >
                     <div className="overlay" />

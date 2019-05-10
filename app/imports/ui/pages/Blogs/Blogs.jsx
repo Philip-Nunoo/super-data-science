@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
+import { Bert } from 'meteor/themeteorchef:bert';
 import Blogs from '../../../api/blogs/Blogs';
 import { createBlog, getPost, deletePost } from '../../../api/blogs/methods';
 import CreateBlogForm from '../../components/CreateBlogForm';
@@ -67,7 +68,9 @@ class BlogLists extends React.Component {
                     toggleCreateBlogForm: true
                 });
             })
-            .catch(error => console.log(error));
+            .catch(error =>
+                Bert.alert(error.reason, 'danger', 'growl-top-right')
+            );
     };
 
     deletePost = id => {
@@ -75,8 +78,11 @@ class BlogLists extends React.Component {
             .callPromise({ id })
             .then(() => {
                 console.log('deleted');
+                Bert.alert('Post removed', 'success', 'growl-top-right');
             })
-            .catch(error => console.log(error));
+            .catch(error =>
+                Bert.alert(error.reason, 'danger', 'growl-top-right')
+            );
     };
 
     renderActionButtons() {

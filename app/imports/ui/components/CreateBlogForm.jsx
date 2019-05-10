@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AutoForm from 'uniforms-bootstrap4/AutoForm';
 import AutoField from 'uniforms-bootstrap4/AutoField';
+import { Bert } from 'meteor/themeteorchef:bert';
 import { BlogFormSchema } from '../../api/blogs/schema';
 
 const CreateBlogForm = ({ formRef, handleSubmit, onSuccess, model }) => {
@@ -11,9 +12,15 @@ const CreateBlogForm = ({ formRef, handleSubmit, onSuccess, model }) => {
             ref={ref => formRef(ref)}
             onSubmit={handleSubmit}
             model={model}
-            onSubmitFailure={error => console.log(error)}
+            onSubmitFailure={error =>
+                Bert.alert(error.reason, 'danger', 'growl-top-right')
+            }
             onSubmitSuccess={() => {
-                console.log('success');
+                Bert.alert(
+                    'Blog created successfully!',
+                    'success',
+                    'growl-top-right'
+                );
                 onSuccess();
             }}
             showInlineError

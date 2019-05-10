@@ -5,6 +5,7 @@ import AutoField from 'uniforms-bootstrap4/AutoField';
 import SubmitField from 'uniforms-bootstrap4/SubmitField';
 import { SimpleSchema2Bridge } from 'uniforms-bridge-simple-schema-2';
 import { Link } from 'react-router-dom';
+import { Bert } from 'meteor/themeteorchef:bert';
 import { SignupSchema } from '../../../api/users/schema';
 import { createUser } from '../../../api/users/methods';
 
@@ -23,9 +24,15 @@ const Signup = () => (
         className="auth-form"
         schema={bridge}
         onSubmit={({ email, password }) => signup(email, password)}
-        onSubmitFailure={error => console.log(error)}
+        onSubmitFailure={error => {
+            Bert.alert(error.reason, 'danger', 'growl-top-right');
+        }}
         onSubmitSuccess={() => {
-            console.log('success');
+            Bert.alert(
+                'User created successfully!',
+                'success',
+                'growl-top-right'
+            );
         }}
     >
         <AutoField name="email" />

@@ -6,6 +6,7 @@ const Home = () => {
             <header
                 className="masthead"
                 // eslint-disable-next-line prettier/prettier
+                // eslint-disable-next-line quotes
                 style={{ backgroundImage: "url('img/home-bg.jpg'" }}
             >
                 <div className="overlay" />
