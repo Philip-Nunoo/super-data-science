@@ -22,11 +22,30 @@ const Users = ({ loading, users }) => {
                                 <div>No User created</div>
                             )}
                             {!loading && users.length > 0 && (
-                                <div>
-                                    {users.map(user => (
-                                        <div key={user._id}>{user.name}</div>
-                                    ))}
-                                </div>
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th />
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Verified</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {users.map(user => (
+                                            <tr>
+                                                <td />
+                                                <td>{user.name}</td>
+                                                <td>
+                                                    {user.primaryEmail.address}
+                                                </td>
+                                                <td>
+                                                    {user.primaryEmail.verified}
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
                             )}
                         </React.Fragment>
                     )}
