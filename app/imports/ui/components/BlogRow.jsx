@@ -21,17 +21,18 @@ const BlogRow = ({ deletePost, editPost, isAdmin, post }) => {
                 <div className="action">
                     <button
                         type="button"
-                        className="btn btn-xs btn-danger"
+                        className="btn btn-sm btn-danger"
                         onClick={() => deletePost(post._id)}
                     >
-                        Delete
+                        <i className="fas fa-trash-alt" />
                     </button>
+                    &nbsp;
                     <button
                         type="button"
-                        className="btn btn-xs btn-info"
+                        className="btn btn-sm btn-info"
                         onClick={() => editPost(post._id)}
                     >
-                        Edit
+                        <i className="fas fa-pen" />
                     </button>
                 </div>
             )}

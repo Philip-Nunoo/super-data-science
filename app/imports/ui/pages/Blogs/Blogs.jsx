@@ -96,18 +96,19 @@ class BlogLists extends React.Component {
                         className="btn btn-primary"
                         onClick={this.createBlog}
                     >
-                        Add blog
+                        Add Blog
                     </button>
                 )}
                 {toggleCreateBlogForm && (
                     <React.Fragment>
                         <button
                             type="button"
-                            className="btn btn-primary"
+                            className="btn btn-secondary"
                             onClick={this.cancel}
                         >
                             Cancel
                         </button>
+                        &nbsp;
                         <button
                             type="button"
                             className="btn btn-primary"
